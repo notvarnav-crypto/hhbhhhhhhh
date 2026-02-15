@@ -1,0 +1,142 @@
+body{
+    margin:0;
+    overflow:hidden;
+    background:black;
+    font-family:'Press Start 2P', cursive;
+    color:white;
+    text-align:center;
+    transition:background 3s ease;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    box-shadow:inset 0 0 200px rgba(0,0,0,0.8);
+    pointer-events:none;
+}
+
+.scene{
+    position:absolute;
+    width:100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    transform:scale(1);
+    transition:opacity 2s ease, transform 4s ease;
+}
+
+.show{
+    opacity:1;
+    transform:scale(1.03);
+}
+
+.star{
+    position:absolute;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 4s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{opacity:0.2;}
+    to{opacity:1;}
+}
+
+.rain{
+    position:absolute;
+    width:2px;
+    height:15px;
+    background:white;
+    animation:rainFall 1s linear infinite;
+}
+
+@keyframes rainFall{
+    from{transform:translateY(-100vh);}
+    to{transform:translateY(100vh);}
+}
+
+.heart{
+    position:absolute;
+    font-size:20px;
+    animation:floatUp 6s linear infinite;
+    text-shadow:0 0 12px pink;
+}
+
+@keyframes floatUp{
+    from{transform:translateY(100vh); opacity:1;}
+    to{transform:translateY(-10vh); opacity:0;}
+}
+
+.arm{
+    position:fixed;
+    top:0;
+    width:50%;
+    height:100%;
+    background:rgba(255,255,255,0.15);
+    transition:2s ease-in-out;
+    z-index:10;
+}
+
+#leftArm{ left:-50%; border-radius:0 60% 60% 0; }
+#rightArm{ right:-50%; border-radius:60% 0 0 60%; }
+
+.breath{
+    animation:breathing 4s infinite;
+}
+
+@keyframes breathing{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.02);}
+    100%{transform:scale(1);}
+}
+
+button{
+    padding:18px 24px;
+    border:none;
+    font-family:inherit;
+    cursor:pointer;
+    margin-top:20px;
+}
+
+input{
+    padding:10px;
+    font-family:inherit;
+    text-align:center;
+}
+
+#envelope{
+    width:300px;
+    height:200px;
+    background:white;
+    position:relative;
+    transform:scale(0);
+    transition:1.5s ease;
+}
+
+#envelope::before{
+    content:"";
+    position:absolute;
+    width:0;height:0;
+    border-left:150px solid transparent;
+    border-right:150px solid transparent;
+    border-bottom:100px solid #ddd;
+    top:-100px;
+    left:0;
+}
+
+.open{
+    transform:scale(1);
+}
+
+#letterText{
+    margin-top:30px;
+    max-width:80%;
+}
+
+.sunrise{
+    background:linear-gradient(to top, #ff9a9e, #fad0c4);
+}
